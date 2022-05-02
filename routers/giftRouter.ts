@@ -20,7 +20,7 @@ giftRouter
         const {giftId} = req.params;
         try {
             const singleGift = await GiftRecord.findOne(giftId);
-            const givenGiftsCount = await singleGift.findGiftCount();
+            const givenGiftsCount = await singleGift.findGivenGiftCount();
             res.json({
                 singleGift,
                 givenGiftsCount,
@@ -47,7 +47,7 @@ giftRouter
                 throw new ValidationError("No such gift");
             }
 
-            if (await gift.findGiftCount() > 0) {
+            if (await gift.findGivenGiftCount() > 0) {
                 throw new ValidationError("Cannot remove given gift");
             }
             await gift.remove();

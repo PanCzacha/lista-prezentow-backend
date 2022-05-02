@@ -36,7 +36,7 @@ export class GiftRecord implements GiftEntity{
     return this.id;
   }
 
-  async findGiftCount(): Promise<GiftEntity["count"]> {
+  async findGivenGiftCount(): Promise<GiftEntity["count"]> {
     const [[{count}]] = await pool.execute("SELECT COUNT(*) AS `count` FROM `children` WHERE `giftId` = :id",
       {
         id: this.id,

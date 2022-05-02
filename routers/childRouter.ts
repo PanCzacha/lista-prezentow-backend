@@ -43,7 +43,7 @@ childRouter
       const gift = giftId === "" ? null : await GiftRecord.findOne(giftId);
 
       if (gift) {
-        if (gift.count <= await gift.findGiftCount()) {
+        if (gift.count <= await gift.findGivenGiftCount()) {
           throw new ValidationError("There are no more gifts of this kind, please choose other.")
         }
       }

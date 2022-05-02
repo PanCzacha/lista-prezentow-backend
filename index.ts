@@ -1,9 +1,8 @@
-import * as express from 'express';
+import express from 'express';
 import "express-async-errors";
 import {handleError} from "./utils/error";
 import { childRouter, giftRouter  } from "./routers";
-
-import * as cors from "cors";
+import cors from "cors";
 import "./utils/db";
 
 const app = express();
@@ -19,6 +18,6 @@ app.use("/gift", giftRouter);
 
 app.use(handleError);
 
-app.listen(port, "localhost", () => {
-  console.log(`Listening on http://localhost:${port}`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Listening on http://0.0.0.0:${port}`);
 });
